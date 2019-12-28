@@ -13,9 +13,8 @@ public class GameFrame extends JFrame {
     ImageIcon emerald = new ImageIcon(this.getClass().getResource("Icons/emerald.png"));
     ImageIcon goblet = new ImageIcon(this.getClass().getResource("Icons/goblet.png"));
     ImageIcon amethyst = new ImageIcon(this.getClass().getResource("Icons/amethyst.png"));
-    //TODO
-    //properties
 
+    //properties
     private int grid_width = 5;
     private int grid_height = 5;
     private int frame_width = 500;
@@ -31,9 +30,6 @@ public class GameFrame extends JFrame {
     private boolean[] buttonsPress;
     private ImageIcon[] img;
     private ImageIcon[] imgArray;
-
-    private int treasurePlace;
-    private int attempt;
 
 
     public GameFrame() {
