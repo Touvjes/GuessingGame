@@ -1,8 +1,6 @@
 import javax.swing.*;
 
 public class BattleShip {
-    private static Boolean play_game = false;
-
     public static void start_screen() {
         //program
         SwingUtilities.invokeLater(new Runnable() {
@@ -15,6 +13,7 @@ public class BattleShip {
             }
         });
     }
+
     public static void start_game() {
         //program
         SwingUtilities.invokeLater(new Runnable() {
@@ -27,6 +26,7 @@ public class BattleShip {
             }
         });
     }
+
     public static void main (String[]args)
     {
         start_game();

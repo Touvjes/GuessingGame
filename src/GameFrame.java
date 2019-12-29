@@ -15,8 +15,8 @@ public class GameFrame extends JFrame {
     ImageIcon amethyst = new ImageIcon(this.getClass().getResource("Icons/amethyst.png"));
 
     //properties
-    private int grid_width = 5;
-    private int grid_height = 5;
+    private int grid_width = 2;
+    private int grid_height = 3;
     private int frame_width = 500;
     private int frame_height = 500;
     private int num_buttons =  grid_width*grid_height;
@@ -30,9 +30,11 @@ public class GameFrame extends JFrame {
     private boolean[] buttonsPress;
     private ImageIcon[] img;
     private ImageIcon[] imgArray;
+    GameState gameState;
 
 
     public GameFrame() {
+        this.gameState = new GameState();
         makeImgArray();
         makeGameGrid();
         setSize(frame_width, frame_height);
@@ -64,36 +66,44 @@ public class GameFrame extends JFrame {
         img[3] = amethyst;
 
         imgArray = new ImageIcon[num_buttons];
+
+        //limit is to make sure the amount of each image is proportionate.
         int limit = num_buttons/img.length;
 
-        // populate array of images equal to number of buttons to serve as the hidden pictures
+        // populate array of images equal to number of buttons to serve as the underside of the cards
+        // there is probably a more straightforward and robust way of doing this, but as long as the number of buttons
+        // and the length of the array is equal, this approach will work.
         for(int i = 0; i < num_buttons; i++){
-            int rand = (int) (Math.random() * 4);
+            int rand = (int) (Math.random() * img.length);
             imgArray[i] = img[rand];
-            //add img[x] to imgArray, but not more copies of img[x] than num_button/#imgs
         }
         return imgArray;
     }
 
-    public void turnCard(JButton[] btn, int num){
-        btn[num].setIcon(imgArray[num]);
+    public ImageIcon[] getImgArray() {
+        return imgArray;
     }
 
+
+
+    //inner class
     class ButtonListener implements ActionListener
     {
         public void actionPerformed (ActionEvent event)
         {
-            // checks button is pressed before then updates screen
             for (int i = 0; i < (num_buttons); i++)
             {
                 if (event.getSource() == buttons[i] && buttonsPress[i] == false)
                 {
+                    gameState.flipCard(i);
                     buttonsPress[i] = true;
                     ((JButton) (event.getSource())).setIcon(imgArray[i]);
+
+                    }
                 }
             }
         }
     }
-}
+
 
 
