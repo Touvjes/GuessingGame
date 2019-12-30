@@ -10,7 +10,7 @@ public class GameState {
     public ArrayList<Integer> cardsFlipped = new ArrayList<>(2);
 
     public GameState(){
-
+        currentPlayer = "Player 1";
     }
 
     public String getGameMode() {
@@ -35,6 +35,7 @@ public class GameState {
 
     public void incScore() {
         this.score++;
+        System.out.println("score: " + score);
     }
 
     public void wait(int mili){

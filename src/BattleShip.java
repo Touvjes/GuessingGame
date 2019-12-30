@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 public class BattleShip {
+
     public static void start_screen() {
         //program
         SwingUtilities.invokeLater(new Runnable() {
@@ -29,9 +30,6 @@ public class BattleShip {
 
     public static void main (String[]args)
     {
-        start_game();
-//        while (play_game == true){
-//            start_game();
-//        }
+        start_screen();
     }
 }

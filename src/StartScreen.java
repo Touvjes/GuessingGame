@@ -8,10 +8,9 @@ public class StartScreen extends JFrame {
     private JSpinner width;
 
 
-
     public StartScreen() {
-        super("BattleShip");
-        this.setSize(500, 600);
+        super("Memory Game");
+        this.setSize(500, 300);
         this.setLayout(new FlowLayout());
         JButton startbtn = new JButton("Start");
         JButton highscore = new JButton("High Score List");
@@ -38,7 +37,7 @@ public class StartScreen extends JFrame {
         startbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Start Clicked");
+                BattleShip.start_game();
             }
         });
 
