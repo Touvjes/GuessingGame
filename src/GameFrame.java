@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class GameFrame extends JFrame {
     //images
@@ -14,8 +15,9 @@ public class GameFrame extends JFrame {
     ImageIcon amethyst = new ImageIcon(this.getClass().getResource("Icons/amethyst.png"));
 
     //properties
-    private int grid_width = 2;
-    private int grid_height = 3;
+    // its necessary for either grid_height or grid_width to be even to ensure even number of squares
+    private int grid_width = 5;
+    private int grid_height = 4;
     private int frame_width = 500;
     private int frame_height = 500;
     private int num_buttons = grid_width * grid_height;
@@ -23,6 +25,8 @@ public class GameFrame extends JFrame {
     private JPanel gameArea;
     private JPanel scoreBoard;
     private JLabel score;
+
+    private String player;
 
     private JButton[] buttons;
     private boolean[] buttonsPress;
@@ -41,7 +45,6 @@ public class GameFrame extends JFrame {
 
     public void makeButtons() {
         gameArea = new JPanel();
-
         gameArea.setLayout(new GridLayout(grid_width, grid_height));
         buttons = new JButton[(num_buttons)];
         buttonsPress = new boolean[(num_buttons)];
@@ -73,10 +76,23 @@ public class GameFrame extends JFrame {
 
         imgArray = new ImageIcon[num_buttons];
 
+        int i = 0;
+        while (Arrays.asList(imgArray).subList(0, num_buttons).contains(null)){
+            int rand1 = (int) (Math.random() * num_buttons);
+            int rand2 = (int) (Math.random() * num_buttons);
+            while (rand1 == rand2){
+                rand2 = (int) (Math.random() * num_buttons);
+            }
+            if (imgArray[rand1] == null && imgArray[rand2] == null){
+                imgArray[rand1] = imgs[i];
+                imgArray[rand2] = imgs[i];
+                System.out.println("" + rand1 + imgArray[rand1]+ "\n" + rand2 + imgArray[rand2]);
+                i++;
+                if (i == imgs.length){
+                    i = 0;
+                }
 
-        for (int i = 0; i < num_buttons; i++) {
-            int rand = (int) (Math.random() * imgs.length);
-            imgArray[i] = imgs[rand];
+            }
         }
         return imgArray;
     }
@@ -91,19 +107,17 @@ public class GameFrame extends JFrame {
         buttons[card1].setIcon(cross);
         buttons[card2].setIcon(cross);
         buttonsPress[card1] = false;
-        System.out.println("turned " + buttonsPress[card1] + buttons[card1] );
         buttonsPress[card2] = false;
-        System.out.println("turned " + buttonsPress[card2]+ buttons[card2] );
     }
 
     public void scorePoint() {
         if (imgArray[gameState.cardsFlipped.get(0)] != imgArray[gameState.cardsFlipped.get(1)]) {
-            JOptionPane.showMessageDialog(null, "Oops, Try Again!");
+            JOptionPane.showMessageDialog(score, "Oops, Try Again!");
             unflip();
         } else {
             gameState.incScore();
             score.setText(gameState.getCurrentPlayer() + "'s Score: " + (gameState.getScore()));
-            JOptionPane.showMessageDialog(null, "Nice, you got a point!");
+            JOptionPane.showMessageDialog(score, "Nice, you got a point!");
         }
         gameState.resetFlip();
     }

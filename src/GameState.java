@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class GameState {
 
     private String gameMode;
+    private String[] players;
     private String currentPlayer;
     private int score;
 
@@ -10,16 +11,31 @@ public class GameState {
     public ArrayList<Integer> cardsFlipped = new ArrayList<>(2);
 
     public GameState(){
-        currentPlayer = "Player 1";
+        //currentPlayer = players[0];
     }
 
+
+    //1 = human vs human
+    //2 = human vs comp
+    //else = single
+    //could have been a case switch
+    public void setGameMode(int mode){
+        if (mode == 1){
+            players[0] = "Player 1 ";
+            players[1] = "Player2";
+        } else if (mode == 2){
+            players[0] = "Player 1";
+            players[1] = "Computer";
+        }else{
+            players[0] = "Player1";
+        }
+
+    }
     public String getGameMode() {
         return gameMode;
     }
 
-    public void setGameMode(String gameMode) {
-        this.gameMode = gameMode;
-    }
+
 
     public String getCurrentPlayer() {
         return currentPlayer;

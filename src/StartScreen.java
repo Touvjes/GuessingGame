@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 public class StartScreen extends JFrame {
     private JSpinner height;
     private JSpinner width;
-
+    private JRadioButton gamemode1;
+    private JRadioButton gamemode2;
+    private JRadioButton gamemode3;
 
     public StartScreen() {
         super("Memory Game");
@@ -17,6 +19,10 @@ public class StartScreen extends JFrame {
         JButton rules = new JButton("Rules");
         JSlider diffslider = new JSlider(0,100,50);
         JComboBox vs = new JComboBox();
+
+        JRadioButton gamemode1 = new JRadioButton("vs. Player");
+        JRadioButton gamemode2 = new JRadioButton("vs. Computer");
+        JRadioButton gamemode3 = new JRadioButton("Single Player");
 
         height = new JSpinner();
         width = new JSpinner();
