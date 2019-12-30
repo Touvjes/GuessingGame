@@ -4,7 +4,7 @@ public class GameState {
 
     private String gameMode;
     private String[] players;
-    private String currentPlayer;
+    private String currentPlayer = "Player 1";
     private int score;
 
     //an arraylist which holds the indexes of the currently flipped cards
@@ -13,7 +13,6 @@ public class GameState {
     public GameState(){
         //currentPlayer = players[0];
     }
-
 
     //1 = human vs human
     //2 = human vs comp
@@ -31,11 +30,11 @@ public class GameState {
         }
 
     }
+
+
     public String getGameMode() {
         return gameMode;
     }
-
-
 
     public String getCurrentPlayer() {
         return currentPlayer;

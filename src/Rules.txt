@@ -1,0 +1,15 @@
+Options:
+
+Select your difficulty. This will decrease the time you have to take your moves.
+
+Select a grid dimensions. This will decide the amount of pictures featured in the game. At least one dimension must be 
+
+Select a game mode.
+Player vs. Player: Play against a friend by taking turns.
+Player vs. Computer: Play against the computer.
+Self: Play by yourself. 
+
+Rules:
+
+The aim of this game is to match the tiles based on the image hidden on the underside of each tile. Click two tiles to reveal if they match! If they do, you find a pair of images you will gain a point and get another turn! If you miss, your turn will end, and if you have an opponent it will become their turn. 
+

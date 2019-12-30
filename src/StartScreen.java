@@ -2,50 +2,47 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class StartScreen extends JFrame {
-    private JSpinner height;
-    private JSpinner width;
-    private JRadioButton gamemode1;
-    private JRadioButton gamemode2;
-    private JRadioButton gamemode3;
+    private JSpinner h;
+    private JSpinner w;
+    public int gridHeight;
+    public int gridWidth;
+    private String[] modes = {"Player vs. Player", "Player vs. Computer", "Single Player"};
 
     public StartScreen() {
         super("Memory Game");
-        this.setSize(500, 300);
+        this.setSize(500, 200);
         this.setLayout(new FlowLayout());
         JButton startbtn = new JButton("Start");
         JButton highscore = new JButton("High Score List");
         JButton rules = new JButton("Rules");
         JSlider diffslider = new JSlider(0,100,50);
-        JComboBox vs = new JComboBox();
+        JComboBox mode = new JComboBox(modes);
 
-        JRadioButton gamemode1 = new JRadioButton("vs. Player");
-        JRadioButton gamemode2 = new JRadioButton("vs. Computer");
-        JRadioButton gamemode3 = new JRadioButton("Single Player");
+        h = new JSpinner();
+        w = new JSpinner();
+        h.setValue(4);
+        w.setValue(4);
 
-        height = new JSpinner();
-        width = new JSpinner();
+        JPanel jp1 = new JPanel();
+        JPanel jp2 = new JPanel();
+        JPanel jp3 = new JPanel();
+        jp1.add(highscore);
+        jp1.add(rules);
+        add(jp1);
 
+        jp2.add(diffslider);
+        jp2.add(h);
+        jp2.add(w);
+        add(jp2);
 
-
-
-        add(highscore);
-        add(rules);
-        add(diffslider);
-        add(height);
-        add(width);
-        add(vs);
-        add(startbtn);
-
+        jp3.add(mode);
+        jp3.add(startbtn);
+        add(jp3);
 
         //actionlisteners
-        startbtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BattleShip.start_game();
-            }
-        });
 
         highscore.addActionListener(new ActionListener() {
             @Override
@@ -57,30 +54,37 @@ public class StartScreen extends JFrame {
         rules.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+
             }
         });
 
+        startbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                setHValue((Integer) h.getValue());
+                setWValue((Integer) w.getValue());
 
-
+                BattleShip.start_game();
+            }
+        });
     }
-    public int getGrid_height() {
-        return (Integer) height.getValue();
+
+    private void setWValue(int val) {
+        gridWidth = val;
     }
 
-    public int getGrid_width() {
-        return (Integer) width.getValue();
+    private void setHValue(int val) {
+        gridHeight = val;
     }
 
-    /*
-    Options:
-        see highscore
-        select difficulty
-        select grid size
-        vs computer/human
-        rules
-        start game
-    */
+    public int getGridHeight() {
+        System.out.println("height"+gridHeight);
+        return gridHeight;
+    }
 
+    public int getGridWidth() {
+        System.out.println("width"+gridWidth);
+        return gridWidth;
+    }
 }

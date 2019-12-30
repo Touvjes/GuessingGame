@@ -7,8 +7,6 @@ import java.util.Arrays;
 public class GameFrame extends JFrame {
     //images
     ImageIcon cross = new ImageIcon(this.getClass().getResource("Icons/cross.png"));
-    ImageIcon redCross = new ImageIcon(this.getClass().getResource("Icons/redCross.png"));
-    ImageIcon logo = new ImageIcon(this.getClass().getResource("Icons/logo.png"));
     ImageIcon gem = new ImageIcon(this.getClass().getResource("Icons/gem.png"));
     ImageIcon emerald = new ImageIcon(this.getClass().getResource("Icons/emerald.png"));
     ImageIcon goblet = new ImageIcon(this.getClass().getResource("Icons/goblet.png"));
@@ -16,6 +14,10 @@ public class GameFrame extends JFrame {
 
     //properties
     // its necessary for either grid_height or grid_width to be even to ensure even number of squares
+    StartScreen startscreen = new StartScreen();
+    //The getters here always return 0 even when the value of the variables is non-0
+//    int x = startscreen.getGridHeight();
+//    int y = startscreen.getGridWidth();
     private int grid_width = 5;
     private int grid_height = 4;
     private int frame_width = 500;
@@ -67,7 +69,7 @@ public class GameFrame extends JFrame {
         add(score, BorderLayout.SOUTH);
     }
 
-    public ImageIcon[] makeImgArray() {
+    public void makeImgArray() {
         ImageIcon[] imgs = new ImageIcon[4];
         imgs[0] = gem;
         imgs[1] = emerald;
@@ -94,7 +96,6 @@ public class GameFrame extends JFrame {
 
             }
         }
-        return imgArray;
     }
 
     public ImageIcon[] getImgArray() {
@@ -112,12 +113,12 @@ public class GameFrame extends JFrame {
 
     public void scorePoint() {
         if (imgArray[gameState.cardsFlipped.get(0)] != imgArray[gameState.cardsFlipped.get(1)]) {
-            JOptionPane.showMessageDialog(score, "Oops, Try Again!");
+            JOptionPane.showMessageDialog(null, "Oops, Try Again!");
             unflip();
         } else {
             gameState.incScore();
             score.setText(gameState.getCurrentPlayer() + "'s Score: " + (gameState.getScore()));
-            JOptionPane.showMessageDialog(score, "Nice, you got a point!");
+            JOptionPane.showMessageDialog(null, "Nice, you got a point!");
         }
         gameState.resetFlip();
     }
