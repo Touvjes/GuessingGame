@@ -1,0 +1,20 @@
+CHEAT CPU (100 %):12000
+Player 2:5920
+Johanna:4600
+Jon:3750
+Player 1:3550
+Player 2:2800
+Player 1:1900
+Player 1:1100
+Player 1:1100
+Lin:950
+player2:650
+Player 1:300
+player1:200
+DUMB CPU:185
+Jon:50
+Player 2:0
+Player 1:-50
+CPU:-500
+Jon:10500
+CHEAT CPU (50 %):-110

@@ -1,15 +1,41 @@
 Options:
 
-Select your difficulty. This will decrease the time you have to take your moves.
+Select grid dimensions. This will decide the amount of tiles featured in the game.
+These dimensions must produce an even number.
 
-Select a grid dimensions. This will decide the amount of pictures featured in the game. At least one dimension must be 
+High Score List:
+Lists all previous scores and the players that earned them!
 
-Select a game mode.
+Game mode:
 Player vs. Player: Play against a friend by taking turns.
 Player vs. Computer: Play against the computer.
-Self: Play by yourself. 
+Self: Play by yourself.
+
+Against Computer:
+    Select Difficulty: The greater the difficulty, the more likely the computer is to cheat!
 
 Rules:
 
-The aim of this game is to match the tiles based on the image hidden on the underside of each tile. Click two tiles to reveal if they match! If they do, you find a pair of images you will gain a point and get another turn! If you miss, your turn will end, and if you have an opponent it will become their turn. 
+The aim of this game is to match the tiles based on the image hidden on the underside of each tile.
+Click two tiles to reveal if they match!
+If they do, you find a pair of images you will gain a point and get another turn!
+If you miss, your turn will end, and if you have an opponent it will become their turn.
+
+Scoring:
+Every time a player or computer player misses a pair, they will get lose points based on the type . Every time you get a pair correct, you get 100 points.
+Additionally, you get 100 extra points for each pair you consecutively get correct.
+
+Special Tiles:
+Some tiles have special effects.
+Tiles with a blue border when flipped over will display all cards briefly.
+Tiles with a green boarder when flipped will show you the position of similar cards!
+
+Theme:
+You can change the Theme of the game by loading your own image set. When you click change theme,
+A file dialogue will pop up allowing you to select a folder full of images.
+Supported Formats: Png
+If you would like to reset to the default image set, just press the "reset theme" button.
+
+
+
 
